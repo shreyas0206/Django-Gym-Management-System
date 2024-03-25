@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Main Start -->
+    <main>
+    	<!-- banner Start -->
+    	<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+		  <div class="carousel-inner ">
+		  	{% for banner in banners %}
+		    <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %}">
+		      <img src="{{banner.img.url}}" class="d-block w-100" alt="Slide 1"></a>
+		    </div>
+		    {% endfor %}
+		  </div>
+		  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+		    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		    <span class="visually-hidden">Previous</span>
+		  </button>
+		  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+		    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+		    <span class="visually-hidden">Next</span>
+		  </button>
+		</div>
+		<!-- End Banner -->
+
+		<!-- Services -->
+{% comment %} 
+		<section class="container my-4">
+			<h1 class="text-center mb-4 section-heading">Services</h1>
+			<div class="row d-flex justify-content-around">
+				{% for service in services %}
+				<div class="col-md-3">
+					<div class="card">
+					  <img src="{{service.img.url}}" class="card-img-top" alt="...">
+					  <div class="card-body">
+					    <h3 class="card-title">{{service.title}}</h3>
+					    <p class="card-text">{{service.detail|truncatechars:40}}</p>
+					    <a href="{{service.id}}" class="btn btn-primary">Read More</a>
+					  </div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</section> {% endcomment %}
+
+		<section class="container my-4">
+			<h1 class="text-center mb-4 section-heading border-bottom pb-2">Services</h1>
+			<div class="row">
+				{% for service in services %}
+				<div class="col-md-4 mb-4">
+					<div class="card">
+					  <img src="{{service.img.url}}" class="card-img-top" alt="...">
+					  <div class="card-body">
+					    <h3 class="card-title"><center>{{service.title}}</center></h3>
+					    {% comment %} <p class="card-text">{{service.detail|truncatechars:40}}</p> {% endcomment %}
+					    <a href="{% url 'pricing' %}" class="btn btn-dark d-flex justify-content-center">Check Plans</a>
+					  </div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</section>
+		<!-- End -->
+		    {% comment %} <div class="bg-image" style="background-image: url('/static/bg.jpg');height: 550vh"> {% endcomment %}
+   
+
+		<!-- Testimonials -->
+		<section class="container-fluid bg-light py-4 mt-5 border-top border-bottom">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5">
+							<h1 class="mb-4 section-heading">About Us</h1>
+							<p class="lh-base">Welcome to Power Fitness, your ultimate destination for unlocking your full potential and achieving peak performance. At Power Fitness, we believe that everyone has the power within them to transform their lives through fitness, and our mission is to empower you on your journey to reaching your health and wellness goals.
+
+Founded with a passion for fitness and a commitment to helping others live their best lives, Power Fitness is more than just a gym—it's a community of like-minded individuals dedicated to pushing boundaries, breaking limits, and striving for excellence in every aspect of life.
+
+Our state-of-the-art facilities are equipped with the latest in fitness technology and equipment, providing you with everything you need to challenge yourself, surpass your goals, and unleash your inner strength. Whether you're a seasoned athlete or just starting out on your fitness journey, our expert trainers and staff are here to guide, motivate, and support you every step of the way.</p>
+							<p><a href="{% url 'pagedetail' 1 %}" class="btn btn-dark text-white">Read More</a></p>
+					</div>
+					<div class="col-md-6 offset-1">
+							<h1 class="mb-4 section-heading">Gallery <a href="{% url 'gallery' %} " class="float-end btn btn-dark text-white mt-2">View All</a></h1>
+							<div class="gallery">
+								{% for gimg in gimgs %}
+								<a href="{{gimg.img.url}}" data-lightbox="gallery"><img src="{{gimg.img.url}}" width="155" class="img-thumbnail" alt="{{gimg.alt_text}}"></a>
+								{% endfor %}
+							</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End Testimonials -->
+
+    </main>
+    <!-- End -->
+
+<!-- LightBox css -->
+<link rel="stylesheet" type="text/css" href="{% static 'lightbox2-2.11.3/dist/css/lightbox.min.css' %}" />
+<!-- LightBox Js -->
+<script type="text/javascript" src="{% static 'lightbox2-2.11.3/dist/js/lightbox.min.js' %}"></script>
+
+
+
+{% endblock %}
