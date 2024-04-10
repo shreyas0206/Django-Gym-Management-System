@@ -5,5 +5,5 @@ User Login,
 Admin Login,
 Trainer Login,
 Admin Panel,
-Payment Gateway,
+Simple Chechout,
 Gym Packages.
